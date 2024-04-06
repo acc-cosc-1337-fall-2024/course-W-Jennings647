@@ -10,8 +10,11 @@ int main()
 
 	do
 	{
-		cout<<"Enter first player(X or O): ";
-		cin>>first_player;
+		do
+		{
+			cout<<"Enter first player(X or O): ";
+			cin>>first_player;
+		}while(first_player != "X" && first_player != "O");
 		game.start_game(first_player);
 		game.display_board();
 
@@ -22,7 +25,8 @@ int main()
 			game.mark_board(position);
 			game.display_board();
 		}
-
+		if(game.get_winner() != "C") {cout<<game.get_winner()<<" wins! \n";}
+		else {cout<<game.get_winner()<<". Tie!\n";}
 		cout<<"Enter Y if you would like to play again: \n";
 		cin>>choice;
 
@@ -31,3 +35,4 @@ int main()
 	
 	return 0;
 }
+
