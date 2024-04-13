@@ -1,9 +1,11 @@
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_manager.h"
 using std::cout; using std::cin;
 
 int main() 
 {
 	tic_tac_toe game;
+	tic_tac_toe_manager games;
 	string first_player;
 	int position;
 	char choice = 'Y';
@@ -27,6 +29,14 @@ int main()
 		}
 		if(game.get_winner() != "C") {cout<<game.get_winner()<<" wins! \n";}
 		else {cout<<game.get_winner()<<". Tie!\n";}
+		games.save_game(game);
+
+		int x, o, t;
+		games.get_winner_total(x, o, t);
+		cout<<"X Wins: "<<x<<"\n";
+		cout<<"O Wins: "<<o<<"\n";
+		cout<<"Ties:   "<<t<<"\n";
+
 		cout<<"Enter Y if you would like to play again: \n";
 		cin>>choice;
 
