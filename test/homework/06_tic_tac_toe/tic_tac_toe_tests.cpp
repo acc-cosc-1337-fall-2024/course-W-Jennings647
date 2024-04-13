@@ -26,9 +26,13 @@ TEST_CASE("Verify function check_column_win, column 1")
 	tic_tac_toe game;
 	game.start_game("X");
 	game.mark_board(1);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(2);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(4);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(5);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(7);
 	REQUIRE(game.game_over() == true);
 	REQUIRE(game.get_winner() == "X");
@@ -48,9 +52,13 @@ TEST_CASE("Verify function check_column_win, column 2")
 	tic_tac_toe game;
 	game.start_game("X");
 	game.mark_board(2);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(1);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(5);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(4);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(8);
 	REQUIRE(game.game_over() == true);
 	REQUIRE(game.get_winner() == "X");
@@ -69,9 +77,13 @@ TEST_CASE("Verify function check_column_win, column 3")
 	tic_tac_toe game;
 	game.start_game("X");
 	game.mark_board(3);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(1);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(6);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(2);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(9);
 	REQUIRE(game.game_over() == true);
 	REQUIRE(game.get_winner() == "X");
@@ -90,9 +102,13 @@ TEST_CASE("Verify function check_row_win, row 1")
 	tic_tac_toe game;
 	game.start_game("X");
 	game.mark_board(1);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(4);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(2);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(5);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(3);
 	REQUIRE(game.game_over() == true);
 	REQUIRE(game.get_winner() == "X");
@@ -111,9 +127,13 @@ TEST_CASE("Verify function check_row_win, row 2")
 	tic_tac_toe game;
 	game.start_game("X");
 	game.mark_board(4);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(1);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(5);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(2);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(6);
 	REQUIRE(game.game_over() == true);
 	REQUIRE(game.get_winner() == "X");
@@ -132,9 +152,13 @@ TEST_CASE("Verify function check_row_win, row 3")
 	tic_tac_toe game;
 	game.start_game("X");
 	game.mark_board(7);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(1);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(8);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(2);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(9);
 	REQUIRE(game.game_over() == true);
 	REQUIRE(game.get_winner() == "X");
@@ -153,9 +177,13 @@ TEST_CASE("Verify function check_diagonal_win, from top left")
 	tic_tac_toe game;
 	game.start_game("X");
 	game.mark_board(1);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(2);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(5);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(3);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(9);
 	//game.display_board();
 	REQUIRE(game.game_over() == true);
@@ -175,9 +203,13 @@ TEST_CASE("Verify function check_diagonal_win, from top right")
 	tic_tac_toe game;
 	game.start_game("X");
 	game.mark_board(3);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(1);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(5);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(2);
+	REQUIRE(game.game_over() == false);
 	game.mark_board(7);
 	//game.display_board();
 	REQUIRE(game.game_over() == true);
@@ -239,6 +271,7 @@ TEST_CASE("Check function get_winner_total")
 	for(int a = 1; a < 8; a++)
 	{
 		game.mark_board(a);
+		if(a < 7){REQUIRE(game.game_over() == false);}
 	}
 	REQUIRE(game.game_over() == true);
 	REQUIRE(game.get_winner() == "X");
@@ -252,6 +285,7 @@ TEST_CASE("Check function get_winner_total")
 	for(int a = 1; a < 8; a++)
 	{
 		game.mark_board(a);
+		if(a < 7){REQUIRE(game.game_over() == false);}
 	}
 	REQUIRE(game.game_over() == true);
 	REQUIRE(game.get_winner() == "O");
